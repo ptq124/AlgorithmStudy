@@ -31,15 +31,30 @@ def dfs(x,y,depth ,eachsum):
             visited[di][dj]=1
             dfs(di,dj,depth+1,eachsum+graph[di][dj])
             visited[di][dj]=0
-    
+            
+            
+def exce(x, y):
+    global max_sum
+    for n in range(4):
+        # 초기값은 시작지점의 값으로 지정
+        tmp = graph[i][j]
+        for d in range(3):
+            t = (n+d)%4
+            di = x+dx[d]
+            dj = y+dy[d]
+
+            if not (0 <= di < n and 0 <= dj< m):
+                tmp = 0
+                break
+            tmp += graph[di][dj]
+        # 최대값 계산
+        max_sum = max(max_sum, tmp)
+
 for i in range(n):
     for j in range(m):
         visited[i][j] =1
         dfs(i,j,0,graph[i][j])
         visited[i][j]=0
         #print(max_sum)
-        if 1<=i<n-1 and 1<=j<m-1: #ㅗㅜㅏㅓ
-            checkOne = sum([graph[i-1][j], graph[i+1][j],graph[i][j-1],graph[i][j+1]]) - min(graph[i-1][j], graph[i+1][j],graph[i][j-1],graph[i][j+1])
-            checkOne+= graph[i][j]
-            max_sum = max(checkOne,max_sum)
+        exce(i, j)
 print(max_sum)
