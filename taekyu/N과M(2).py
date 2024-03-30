@@ -8,6 +8,7 @@ ans=[]
 
 def dfs(k,lst):
   if len(lst)==m:
+    print(lst)
     ans.append(lst)
     return
   
