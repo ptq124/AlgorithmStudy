@@ -1,4 +1,6 @@
 # 테크로미노
+# dfs를 이용
+# 가지치기를 하면 속도가 올라감
 import sys
 input =sys.stdin.readline
 sys.setrecursionlimit(10**6)
